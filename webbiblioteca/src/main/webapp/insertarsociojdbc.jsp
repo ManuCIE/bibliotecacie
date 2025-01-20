@@ -14,5 +14,5 @@ SocioRepository repo = new SocioRepositoryJDBC();
 
 repo.insertar(s);
 
-response.sendRedirect("listasociosjdbc.jsp");
+response.sendRedirect("formulariodirecciones.html");
 %>

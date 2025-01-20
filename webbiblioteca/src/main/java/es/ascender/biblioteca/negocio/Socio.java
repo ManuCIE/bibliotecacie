@@ -1,6 +1,15 @@
 package es.ascender.biblioteca.negocio;
 
 public class Socio {
+	private Direcciones direcciones;
+
+	public Direcciones getDirecciones() {
+		return direcciones;
+	}
+
+	public void setDirecciones(Direcciones direcciones) {
+		this.direcciones = direcciones;
+	}
 
 	private String dni;
 	private String nombre;
