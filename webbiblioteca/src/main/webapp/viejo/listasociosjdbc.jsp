@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="es.ascender.biblioteca.negocio.Socio"%>
 
+<%@ page
+	import="es.ascender.biblioteca.repositories.jdbc.SocioRepositoryJDBC"%>
+<%@ page import="es.ascender.biblioteca.repositories.SocioRepository"%>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -22,7 +25,17 @@
 		crossorigin="anonymous"></script>
 
 	<%
-	List<Socio> lista = (List<Socio>) request.getAttribute("lista");
+	SocioRepository repo = new SocioRepositoryJDBC();
+	List<Socio> lista = null;
+
+	if (request.getParameter("orden") != null) {
+		out.println("Ordenado por " + request.getParameter("orden"));
+		lista = repo.buscarTodosOrdenados(request.getParameter("orden"));
+	} else {
+
+		out.println("Lista sin ordenar");
+		lista = repo.buscarTodos();
+	}
 	%>
 	<div class="container">
 		<table class="table table-striped table-hover">
